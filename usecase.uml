@@ -1,0 +1,16 @@
+@startuml
+actor User
+actor Backend
+left to right direction
+skinparam packageStyle rectangle
+rectangle attachments{
+	actor App
+	User -> (Select attachments) : use application
+	(Select attachments) -> App
+	App -> (Message attachment) : app sends data 
+	(Message attachment) --> Backend	
+	Backend --> (Delivered messages) : backend sends message with attachment
+	(Delivered messages) -> App
+	App -> (Show attachments)
+}
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam BoxPadding 10
+participant User
+participant App
+box "web-service"
+participant Backend
+end box
+participant AnotherChatClient
+participant AnotherChatUser
+User -> App : select attachment type
+User ->x App : if didnt select - cancel scenario
+App -> Backend : send message with selected attachment data
+Backend -> AnotherChatClient : recieve message event 
+AnotherChatClient -> AnotherChatUser : show message with attachment
+@enduml
